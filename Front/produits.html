@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="mdbootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="mdbootstrap/css/mdb.min.css">
     <link rel="stylesheet" href="mdbootstrap/css/style.css">
-    <link rel="stylesheet" href="css/panier.css">
+    <link rel="stylesheet" href="css/produits.css">
     <link rel="stylesheet" href="fontawesome/css/all.css">
 
 </head>
@@ -55,15 +55,30 @@
                 <!-- Side navigation links -->
                 <li>
                     <ul class="collapsible collapsible-accordion">
-                        <li><a class="collapsible-header waves-effect arrow-r" href="#cuisine"><i class="fas fa-chevron-right"></i>Cuisine<i
+                        <li><a class="collapsible-header waves-effect arrow-r" href="#new"><i class="fas fa-chevron-right"></i>Nouveautés de la semaine<i
                         
                         </li>
-                        <li><a class="collapsible-header waves-effect arrow-r" href="#cosmetique"><i class="fas fa-hand-pointer"></i>Cosmétique<i</li>
-                        <li><a class="collapsible-header waves-effect arrow-r"><i class="fas fa-eye"></i> About</a></li>
-                        <li><a class="collapsible-header waves-effect arrow-r"><i class="far fa-envelope"></i> Contact me</a></li>
+                        <li><a class="collapsible-header waves-effect arrow-r" href="#cuisine"><i class="fas fa-hand-pointer"></i>Cuisine<i</li>
+                        <li><a class="collapsible-header waves-effect arrow-r" href="#cosmetique"><i class="fas fa-eye"></i> Cosmétique</a></li>
+                        <li><a class="collapsible-header waves-effect arrow-r"><i class="far fa-envelope"></i> ????</a></li>
                     </ul>
                 </li>
                 <!--/. Side navigation links -->
+                <li>
+                    <form class="raccourcis">
+                        <div class="form-group md-form mt-0 pt-1 waves-light">
+                            <li>
+                                <ul class="collapsible collapsible-accordion">
+                                    <li><a class="collapsible-header waves-effect arrow-r" href="index.html"><i class="fas fa-chevron-right"></i>Explications<i
+                                    
+                                    </li>
+                                    <li><a class="collapsible-header waves-effect arrow-r" href="contact.html"><i class="fas fa-hand-pointer"></i>contact<i</li>
+                                    
+                                </ul>
+                            </li>
+                        </div>
+                    </form>
+                </li>
             </ul>
             <div class="sidenav-bg mask-strong"></div>
         </div>
@@ -71,38 +86,28 @@
         <!-- Navbar -->
         <nav class="navbar fixed-top navbar-toggleable-md navbar-expand-lg scrolling-navbar double-nav success-color">
             <!-- SideNav slide-out button -->
-            <div class="float-left">
+            <div class="d-flex">
                 <a href="#" data-activates="slide-out" id="button-collapse" class="button-collapse black-text"><i class="fas fa-bars"></i></a>
-            </div>
-            <!-- Breadcrumb-->
-            <ul class="nav navbar-nav nav-flex-icons ml-auto a-custom">
-                <li class="nav-item">
-                    <a class="nav-link"><i class="fas fa-envelope"></i> <span class="clearfix d-none d-sm-inline-block">Contact</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link"><i class="fas fa-comments"></i> <span class="clearfix d-none d-sm-inline-block">Support</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link"><i class="fas fa-user"></i> <span class="clearfix d-none d-sm-inline-block">Account</span></a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Dropdown
-                </a>
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                </li>
-            </ul>
-        </nav>
-        <!-- /.Navbar -->
+                        </div>
+                        <!-- Breadcrumb-->
+                        <ul class="nav navbar-nav nav-flex-icons ml-auto a-custom">
+                            <li class="nav-item">
+                                <a class="nav-link"><i class="fas fa-envelope"></i> <span class="clearfix d-none d-sm-inline-block">Contact</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link"><i class="fas fa-comments"></i> <span class="clearfix d-none d-sm-inline-block">Support</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link"><i class="fas fa-user"></i> <span class="clearfix d-none d-sm-inline-block">Account</span></a>
+                            </li>
+                        </ul>
+                        </nav>
+                        <!-- /.Navbar -->
     </header>
     <!--/.Double navigation-->
     <div id="content">
         <div class="container">
-            <h1>Les Nouveautés de la semaine !</h1><br/>
+            <h1 id="new">Les Nouveautés de la semaine !</h1><br/>
             <div id="carousel-example-multi" class="carousel slide carousel-multi-item v-2" data-ride="carousel">
 
                 <!-- Indicators -->
@@ -411,8 +416,8 @@
     <script type="text/javascript" src="mdbootstrap/js/popper.min.js"></script>
     <script type="text/javascript" src="mdbootstrap/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="mdbootstrap/js/mdb.min.js"></script>
-    <script type="text/javascript" src="../js/panier/panier.js"></script>
-    <script type="text/javascript" src="../js/panier/carousel.js"></script>
+    <script type="text/javascript" src="../js/produits/produits.js"></script>
+    <script type="text/javascript" src="../js/produits/carousel.js"></script>
 </footer>
 
 </html>

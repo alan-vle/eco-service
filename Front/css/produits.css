@@ -14,6 +14,10 @@
     width: 200px !important;
 }
 
+#basicExampleNav {
+    margin-left: 200px;
+}
+
 .container {
     padding-top: 100px;
 }
