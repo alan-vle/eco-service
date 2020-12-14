@@ -1,0 +1,28 @@
+.double-nav .breadcrumb-dn {
+    color: #fff;
+}
+
+.button-collapse i {
+    color: #fff
+}
+
+.a-custom {
+    color: white !important;
+}
+
+#slide-out {
+    width: 200px !important;
+}
+
+.container {
+    padding-top: 100px;
+}
+
+h1 {
+    font-size: 32px;
+    line-height: 150px;
+    text-shadow: -1px -1px rgba(0, 200, 81, 0.7), 1px 1px rgba(0, 200, 81), -3px 0 4px #000;
+    font-family: "Segoe print", Arial, Helvetica, sans-serif;
+    color: rgba(0, 200, 81);
+    text-align: center;
+}
