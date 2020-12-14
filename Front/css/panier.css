@@ -26,3 +26,9 @@ h1 {
     color: rgba(0, 200, 81);
     text-align: center;
 }
+
+@media (min-width: 1441px) {
+    .container {
+        margin-left: 275px;
+    }
+}
