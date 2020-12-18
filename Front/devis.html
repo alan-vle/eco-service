@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/devis.css" type="text/css" />
+    <script type="text/javascript" src="../js/devis/script.js"></script>
+    <br/>
+    <!-- <div class="centercolumn"><strong>Demande de démonstration</strong></div><br/> -->
+</head>
+
+
+<body>
+    <div class="container">
+        <div class="h1">
+            <p><ins>Demande de devis</ins></p>
+        </div>
+        <form>
+            <action="data-processing-demo.php" method="post">
+                <br/>
+                <div class="form-group">
+                    <label>* Champs obligatoires</label>
+                    <div class="info">
+                        <div class="row">
+                            <div class="col-xs-12 col-md-6">
+                                <label>* Nom</label> <input type="texte" class="form-control" name="nom" placeholder="Nom" required>
+                            </div>
+                            <br/>
+                            <div class="col-xs-12 col-md-6">
+                                <label>* Prénom</label> <input type="texte" class="form-control" name="prénom" placeholder="Prénom" required>
+                            </div>
+                        </div>
+                        <br/>
+                        <div class="row">
+                            <div class="col-xs-12 col-md-6">
+                                <label>* Société</label> <input type="texte" class="form-control" name="societe" placeholder="Société" required>
+                                <br/>
+                            </div>
+                            <div class="col-xs-12 col-md-6">
+                                <label>* Fonction</label> <input type="texte" class="form-control" name="fonction" placeholder="Fonction" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 col-md-6">
+                                <label>* Adresse mail</label> <input type="email" class="form-control" name="email" placeholder="Mail" required>
+                            </div>
+                            <br/>
+                            <div class="col-xs-12 col-md-6">
+                                <label>* Téléphone</label> <input type="tel" class="form-control" name="tel" placeholder="Numéro de téléphone" required>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="encadrer-contenu">* Type(s) d'événement(s)</div>
+                <div class="fomr-group">
+                    <select class="form-control" name="choix_1" onchange="check(this)" required>
+                <option value="" selected>Sélectionner une option</option>
+                <option value="congres">Congrès</option> 
+                <option value="seminaire">Séminaire</option>
+                <option value="salon">Salon</option>
+                <option value="Symposium">Symposium</option>
+                <option value="reunion">Réunion (interte et/ou externe)</option>
+                <option value="team-building">Team building</option>
+                <option value="autres">Autres</option>
+            </select>
+                    <input type="text" class="form-control" name="autrechoix" id="autrechoix" placeholder="Quelle événement souhaitez-vous" style="visibility:hidden;" required>
+                </div>
+
+                <div class="fomr-group">
+                    <select class="form-control" name="choix_1.1" onchange="check1_1(this)">
+                <option value="" selected>Sélectionner une deuxième option si nécessaire</option>
+                <option value="congres">Congrès</option> 
+                <option value="seminaire">Séminaire</option>
+                <option value="salon">Salon</option>
+                <option value="Symposium">Symposium</option>
+                <option value="reunion">Réunion (interte et/ou externe)</option>
+                <option value="team-building">Team building</option>
+                <option value="autres1_1">Autres</option>
+            </select>
+                    <input type="text" class="form-control" name="autrechoix1_1" id="autrechoix1_1" placeholder="Quelle événement souhaitez-vous" style="visibility:hidden;">
+                </div>
+
+                <div class="fomr-group">
+                    <select class="form-control" name="choix_1.2" onchange="check1_2(this)">
+                <option value="" selected>Sélectionner une troisième option si nécessaire</option>
+                <option value="congres">Congrès</option> 
+                <option value="seminaire">Séminaire</option>
+                <option value="salon">Salon</option>
+                <option value="Symposium">Symposium</option>
+                <option value="reunion">Réunion (interte et/ou externe)</option>
+                <option value="team-building">Team building</option>
+                <option value="autres1_2">Autres</option>
+            </select>
+                    <input type="text" class="form-control" name="autrechoix1_2" id="autrechoix1_2" placeholder="Quelle événement souhaitez-vous" style="visibility:hidden;">
+                </div>
+
+                <label>Virutel ou Hybride</label><br/>
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="customRadioInline1" name="type" class="custom-control-input">
+                    <label class="custom-control-label" for="customRadioInline1">Virtuel</label>
+                </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="customRadioInline2" name="type" class="custom-control-input">
+                    <label class="custom-control-label" for="customRadioInline2">Hybride</label>
+                </div>
+
+
+
+                <div class="fomr-group">
+                    <br/>
+                    <label>Espace(s) souhaité(s)</label>
+                    <select class="form-control" name="choix_2">
+                <option value="" selected>Sélectionner un espace</option>
+                <option value="Auditorium">Auditorium</option> 
+                <option value="Atelier">Atelier</option>
+                <option value="place-expert">Place des experts</option>
+                <option value="business-meeting">Speed Business Meeting</option>
+                <option value="e-poster">Salle e-poster</option>
+                <option value="salle-exposition">Salle d'exposition</option>
+            </select>
+                    <br/>
+                </div>
+
+                <div class="fomr-group">
+                    <select class="form-control" name="choix_2.1">
+                <option value="" selected>Sélectionner un deuxième espace si nécessaire</option>
+                <option value="Auditorium">Auditorium</option> 
+                <option value="Atelier">Atelier</option>
+                <option value="place-expert">Place des experts</option>
+                <option value="business-meeting">Speed Business Meeting</option>
+                <option value="e-poster">Salle e-poster</option>
+                <option value="salle-exposition">Salle d'exposition</option>
+            </select>
+                    <br/>
+                </div>
+
+                <div class="fomr-group">
+                    <select class="form-control" name="choix_2.2">
+                <option value="" selected>Sélectionner un troisième espace si nécessaire</option>
+                <option value="Auditorium">Auditorium</option> 
+                <option value="Atelier">Atelier</option>
+                <option value="place-expert">Place des experts</option>
+                <option value="business-meeting">Speed Business Meeting</option>
+                <option value="e-poster">Salle e-poster</option>
+                <option value="salle-exposition">Salle d'exposition</option>
+            </select>
+                    <br/>
+                </div>
+
+                <br/>
+
+                <div class="form-group">
+                    <label>Date(s) / nombre de jour(s)</label>
+                    <textarea class="form-control" cols="30" rows="5" placeholder="Quelle(s) date(s) et nombre de jour(s) souhaitez-vous ?"></textarea>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-12 col-md-6">
+                        <label>Nombre de participants (public)</label> <input type="texte" class="form-control" name="participants" placeholder="Nombre de participants">
+                    </div>
+                    <br/>
+                    <div class="col-xs-12 col-md-6">
+                        <label>Nombre d'intervenants</label> <input type="texte" class="form-control" name="intervenants" placeholder="Nombre d'intervenants">
+                    </div>
+                </div>
+
+                <hr>
+                <br/>
+
+                <div class="encadrer-contenu">* Merci de détailler votre demande pour que nous puissions répondre arfaitement à vos attentes.</div>
+                <div class="form-group">
+                    <textarea class="form-control" cols="30" rows="5" placeholder="Détailler votre demande" required></textarea>
+                </div>
+                <br>
+                <hr>
+                <br/>
+
+                <div class="encadrer-contenu2">Comment nous avez-vous connus ?</div>
+
+                <div class="form-group">
+                    <select class="form-control" name="choix_2" onchange="check2(this)">
+                <option value="" selected>Sélectionner une option</option>
+                <option value="reseaux">Réseaux sociaux</option> 
+                <option value="B-a-o">Bouche à oreilles</option>
+                <option value="evenement">Événenement(s)</option>
+                <option value="invitation">Invitation par mail</option>
+                <option value="internet">Moteur de recherche</option>
+                <option value="presse">Article de presse</option>
+                <option value="autres2">Autres</option>
+            </select>
+                    <input type="text" class="form-control" name="autrechoix2" id="autrechoix2" placeholder="Par quel moyen ?" style="visibility:hidden;">
+                    <br/>
+                </div>
+
+                <button class="btn btn-primary" type="submit" value="mailer" name="mailform"> Envoyer </button>
+
+    </div>
+    </form>
+
+</body>
+
+</html>
