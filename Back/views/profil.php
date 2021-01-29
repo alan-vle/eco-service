@@ -1,7 +1,6 @@
 <?php
 session_start();
-echo $_SESSION['id'] . ' ' . $_SESSION['name'] . ' ' . $_SESSION['email']; 
-
+echo $_SESSION['id'] . ' ' . $_SESSION['name'] . ' ' . $_SESSION['email'];
 ?>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
@@ -9,7 +8,7 @@ echo $_SESSION['id'] . ' ' . $_SESSION['name'] . ' ' . $_SESSION['email'];
 
 <div class="row text-center">
     <div class="col-md-4">
-        <a href="deconnexion.php" class="btn btn-primary">deco</a>
+        <a href="../deconnexion.php" class="btn btn-primary">deco</a>
     </div>
     <div class="col-md-4">
         <form method="POST" action="../data_processing.php">

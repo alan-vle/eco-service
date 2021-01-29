@@ -31,15 +31,10 @@ class Customers{
         $rqt = $this->bdd->prepare('SELECT * FROM customers WHERE email = ?');
         $rqt->execute(array($email));
         $customer = $rqt->fetch();
-        //echo '<pre>' . var_dump($customers) . '</pre><br>';
-        echo $customer["name"] . '<br>';
-        echo $password . '<br>';
         $rqt->closeCursor();
 
         if ($customer['email'] == $email && password_verify($password, $customer['password']))
         {
-            echo $customer['password'];
-
             $this->setName($customer['name']);
             $this->setEmail($customer['email']);
             $this->setAddress($customer['address']);
@@ -49,8 +44,6 @@ class Customers{
             $this->setCountry($customer['country']);
             $this->setPhone($customer['phone']);
             $this->setIdCompany($customer['id_company']);
-            //echo $this->getName() . '<br><br>';
-            //echo '<pre>' . var_dump($this) . '</pre><br>';
         }
     }
 

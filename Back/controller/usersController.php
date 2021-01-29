@@ -26,33 +26,25 @@ if (isset($_POST['formInscription'])) {
 }
 
 if (isset($_POST['connect'])) {
-    echo '1 <br>';
     if (!empty($_POST['password']) AND !empty($_POST['email'])) {
-        echo '2 <br>';
         require_once '../config.php';
         $bdd = config();
-        echo '3 <br>';
         $rqt = $bdd->prepare('SELECT * FROM customers WHERE email = ?');
         $rqt->execute(array($_POST['email']));
         $customers = $rqt->fetch();
         $rqt->closeCursor();
         $customers = new Customers();
-        echo '4 <br>';
         $customers->connect($_POST['email'], $_POST['password']);
         if($customerInfo != null) {
-            echo '<br> 4.5 <br>';
             require_once 'cartController.php';
-            echo '<br> 5 <br>';
             getSavedShoppingCart($customers->getId());
             $_SESSION['id'] = $customers->getId();
             $_SESSION['name'] = $customers->getName();
-            $_SESSION['email'] = $customers->setEmail();
+            $_SESSION['email'] = $customers->getEmail();
             $customerInfo = $customers;
-            echo '<br> GG <br>';
-
 
             //header("Location: ../index.php");
-            //header("Location: views/profil.php?id=".$_SESSION['id']);
+            header("Location: ../views/profil.php?id=".$_SESSION['id']);
         }
         else {
             echo 'error: $customers->connect() == null';
