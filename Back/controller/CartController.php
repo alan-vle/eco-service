@@ -13,10 +13,10 @@ echo '4,85  <br>';
 $redirectLoc = '../index.php';
 
 // Process request based on the specified action
-if(isset($_REQUEST['action']) && !empty($_REQUEST['action'])){
+if (isset($_REQUEST['action']) && !empty($_REQUEST['action'])) {
     $bdd = config();
     //*********ADD************
-    if($_REQUEST['action'] == 'addToCart' && !empty($_REQUEST['id'])){
+    if ($_REQUEST['action'] == 'addToCart' && !empty($_REQUEST['id'])) {
 
         // Get product details
         $query = $bdd->prepare("SELECT * FROM products WHERE id = ?");
@@ -30,11 +30,10 @@ if(isset($_REQUEST['action']) && !empty($_REQUEST['action'])){
         );
 
         // Insert item to cart
-        echo $cart->insert($itemData)?'ok':'err';
+        echo $cart->insert($itemData) ? 'ok' : 'err';
         header("location: ../index.php#idCard" . htmlspecialchars($_REQUEST['id']));
-    }
-    //*********UPDATE************
-    elseif($_REQUEST['action'] == 'updateCartItem' && !empty($_REQUEST['id'])){
+    } //*********UPDATE************
+    elseif ($_REQUEST['action'] == 'updateCartItem' && !empty($_REQUEST['id'])) {
         // Update item data in cart
         $itemData = array(
             'rowid' => $_REQUEST['id'],
@@ -43,10 +42,11 @@ if(isset($_REQUEST['action']) && !empty($_REQUEST['action'])){
         $updateItem = $cart->update($itemData);
 
         // Return status
-        echo $updateItem?'ok':'err';die;
+        echo $updateItem ? 'ok' : 'err';
+        die;
 
         //*********REMOVE************
-    }elseif($_REQUEST['action'] == 'removeCartItem' && !empty($_REQUEST['id'])) {
+    } elseif ($_REQUEST['action'] == 'removeCartItem' && !empty($_REQUEST['id'])) {
         // Remove item from cart
         $deleteItem = $cart->remove($_REQUEST['id']);
 
@@ -69,8 +69,8 @@ function getSavedShoppingCart($customerId)
         // Si cart(table) != vide ET que cart(session) == vide
         $_SESSION['cart_contents'] = json_decode($cart_content['cart_contents'], true);
         $cart = new Cart();
-        echo 'cart content connexion : ' , '<pre>' , var_dump($_SESSION['cart_contents']) , '</pre>';
-    } elseif(!empty($cart_content['cart_contents']) && !empty($_SESSION['cart_contents'])) {
+        echo 'cart content connexion : ', '<pre>', var_dump($_SESSION['cart_contents']), '</pre>';
+    } elseif (!empty($cart_content['cart_contents']) && !empty($_SESSION['cart_contents'])) {
         // Si cart(table) != vide ET que cart(session) != vide
         $cart = new Cart();
         echo 'cart content : ';

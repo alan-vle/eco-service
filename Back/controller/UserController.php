@@ -12,15 +12,15 @@ if (isset($_POST['formInscription'])) {
     else{
         $testEmail = email($bdd);
         if (!empty($testEmail)) {
-            header('location: ../views/signup.php?' . $testEmail);
+            header('location: ../view/signup.php?' . $testEmail);
         }
         else{
             if ($_POST['password'] == $_POST['password-repeat']) {
                 $customers = new Customers();
                 $customers->insert(array("name" => $_POST['name'], "email" => $_POST['email'], "password" => $_POST['password'] ));
-                header('location: ../views/signin.php');
+                header('location: ../view/signin.php');
             }
-            else header('location: ../views/signup.php?errorPass');//$msg = "Mot de passe différent !";
+            else header('location: ../view/signup.php?errorPass');//$msg = "Mot de passe différent !";
         }
     }
 }
@@ -36,7 +36,7 @@ if (isset($_POST['connect'])) {
         $customers = new Customers();
         $customers->connect($_POST['email'], $_POST['password']);
         if($customerInfo != null) {
-            require_once 'cartController.php';
+            require_once 'CartController.php';
             getSavedShoppingCart($customers->getId());
             $_SESSION['id'] = $customers->getId();
             $_SESSION['name'] = $customers->getName();
@@ -44,7 +44,7 @@ if (isset($_POST['connect'])) {
             $customerInfo = $customers;
 
             //header("Location: ../index.php");
-            header("Location: ../views/profil.php?id=".$_SESSION['id']);
+            header("Location: ../view/profil.php?id=".$_SESSION['id']);
         }
         else {
             echo 'error: $customers->connect() == null';

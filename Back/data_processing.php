@@ -8,16 +8,16 @@ if (isset($_POST['formInscription'])) {
     else{
         $testEmail = email($bdd);
         if (!empty($testEmail)) {
-            header('location: views/signup.php?' . $testEmail);
+            header('location: view/signup.php?' . $testEmail);
         }
         else{
             if ($_POST['password'] == $_POST['password-repeat']) {
                 $insert = $bdd->prepare('INSERT INTO customers(name, email, password, role, date) VALUES(?,?,?,?,CURDATE())');
                 $insert->execute(array($_POST['name'], $_POST['email'], password_hash($_POST['password'], PASSWORD_DEFAULT), "membre"));
                 $insert->closeCursor();
-                header('location: views/signin.php');
+                header('location: view/signin.php');
             }
-            else header('location: views/signup.php?errorPass');//$msg = "Mot de passe différent !";
+            else header('location: view/signup.php?errorPass');//$msg = "Mot de passe différent !";
         }
     }
 }
@@ -56,7 +56,7 @@ if (isset($_POST['connect'])) {
             $_SESSION['name'] = $customers['name'];
             $_SESSION['email'] = $customers['email'];
 
-            //header("Location: views/profil.php?id=".$_SESSION['id']);
+            //header("Location: view/profil.php?id=".$_SESSION['id']);
         } else {
             $msg = "Mauvais email ou mot de passe !";
         }
@@ -69,10 +69,10 @@ if (isset($_SESSION['id'], $_POST['formModif'])) {
     require_once 'config.php';
     $testEmail = email($bdd);
     if (!empty($testEmail)) {
-        header('location: views/profil.php?' . $testEmail);
+        header('location: view/profil.php?' . $testEmail);
     }
     if (isset($_POST['password']) && $_POST['password'] != $_POST['password-repeat']) {
-        header('location: views/profil.php?errorPass');
+        header('location: view/profil.php?errorPass');
     }
     elseif(empty(email($bdd))){
         $rqt = $bdd->prepare('UPDATE customers SET name = :name , email = :email, password= :password, phone= :phone WHERE id = :id');

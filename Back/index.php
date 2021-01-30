@@ -26,8 +26,8 @@
             <a href="deconnexion.php">deconnexion</a>
             
         <?php } else { ?>
-           <a href="views/signin.php">connexion</a>
-            <a href="views/signup.php">inscription</a> 
+           <a href="view/signin.php">connexion</a>
+            <a href="view/signup.php">inscription</a>
         <?php } ?>
     </div>
     <?php 

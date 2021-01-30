@@ -26,7 +26,7 @@
 
 								<!--Corps formulaire-->
 								<div class="p-2">
-									<form method="post" action="../controller/usersController.php">
+									<form method="post" action="../controller/UsersController.php">
 										<label class="lbl-error"><?php if(isset($_GET['msg'])) {echo $_GET['msg'];}?></label>
 										<div class="form-group">
 											<label for="inputEmail" class="required">Votre email</label>

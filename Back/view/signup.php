@@ -26,7 +26,7 @@
 
 					<!--Corps formulaire-->
 					<div class="p-2">
-						<form class="custom-card-form" method="POST" action="../controller/usersController.php">
+						<form class="custom-card-form" method="POST" action="../controller/UsersController.php">
 						<?php 
 						if (isset($_GET['errorPass']) || isset($_GET['notValidMail']) || isset($_GET['errorMail'])) {
 							?>

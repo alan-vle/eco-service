@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="ecoservice_ecommerce@mysql-ecoservice.alwaysdata.net" uuid="f0c75308-cd7f-4dab-adce-ce69eaabe526">
+    <data-source source="LOCAL" name="Eco-service" uuid="2787c8a0-a989-470e-a5fa-412bfc5a644d">
       <driver-ref>mariadb</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.mariadb.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mariadb://mysql-ecoservice.alwaysdata.net:3306/ecoservice_ecommerce</jdbc-url>
+      <jdbc-url>jdbc:mariadb://mysql-ecoservice.alwaysdata.net/ecoservice_ecommerce</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </component>
