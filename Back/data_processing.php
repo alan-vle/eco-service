@@ -75,8 +75,8 @@ if (isset($_SESSION['id'], $_POST['formModif'])) {
         header('location: view/profil.php?errorPass');
     }
     elseif(empty(email($bdd))){
-        $rqt = $bdd->prepare('UPDATE customers SET name = :name , email = :email, password= :password, phone= :phone WHERE id = :id');
-        $rqt->execute(array(
+        //$rqt = $bdd->prepare('UPDATE customers SET name = :name , email = :email, password= :password, phone= :phone WHERE id = :id');
+        //$rqt->execute(array(
             'id'=>$_SESSION['id'],
             'name'=>$_POST['name'],
             'email'=>$_POST['email'],

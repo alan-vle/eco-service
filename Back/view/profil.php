@@ -1,6 +1,8 @@
 <?php
 session_start();
-echo $_SESSION['id'] . ' ' . $_SESSION['name'] . ' ' . $_SESSION['email'];
+require_once '../model/Customers.php';
+$customerInfo = $_SESSION['customer'];
+//echo $customerInfo->getId() . ' ' . $_SESSION['customer']->getName() . ' ' . $_SESSION['customer']->getEmail();
 ?>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
@@ -11,8 +13,8 @@ echo $_SESSION['id'] . ' ' . $_SESSION['name'] . ' ' . $_SESSION['email'];
         <a href="../deconnexion.php" class="btn btn-primary">deco</a>
     </div>
     <div class="col-md-4">
-        <form method="POST" action="../data_processing.php">
-            <label>Nom complet :<input class="form-control" type="text" name="name" value="<?=$_SESSION['name']?>"></label><br>
+        <form method="POST" action="../controller/UserController.php">
+            <label>Nom complet :<input class="form-control" type="text" name="name" value="<?=$_SESSION['customer']->getName()?>"></label><br>
             <label>Email :<input class="form-control" type="text" name="email" value="<?=$_SESSION['email']?>"></label><br>
             <label>Mot de passe actuel :<input class="form-control" type="text" name="current-password"></label><br>
             <label>Nouveau mot de passe :<input class="form-control" type="text" name="password"></label><br>

@@ -28,6 +28,7 @@ class Customers{
 
     public function connect($email, $password)
     {
+        echo 'IN connect <br>';
         $rqt = $this->bdd->prepare('SELECT * FROM customers WHERE email = ?');
         $rqt->execute(array($email));
         $customer = $rqt->fetch();
@@ -35,15 +36,18 @@ class Customers{
 
         if ($customer['email'] == $email && password_verify($password, $customer['password']))
         {
-            $this->setName($customer['name']);
-            $this->setEmail($customer['email']);
-            $this->setAddress($customer['address']);
-            $this->setAddress2($customer['address2']);
-            $this->setTown($customer['town']);
-            $this->setZipCode($customer['zip_code']);
-            $this->setCountry($customer['country']);
-            $this->setPhone($customer['phone']);
-            $this->setIdCompany($customer['id_company']);
+            echo 'User exist <br>';
+
+            $this->id = $customer['id'];
+            $this->name = $customer['name'];
+            $this->email = $customer['email'];
+            $this->address = $customer['address'];
+            $this->address2 = $customer['address2'];
+            $this->town = $customer['town'];
+            $this->zipCode = $customer['zip_code'];
+            $this->country = $customer['country'];
+            $this->phone = $customer['phone'];
+            $this->idCompany = $customer['id_company'];
         }
     }
 
