@@ -1,0 +1,11 @@
+[X] PANIER
+[X] Modal Panier
+
+[~] CUSTOMER -> (Forgot Password)
+[~] PROFIL -> (Modifier formulaire)
+[~] PRODUITS -> (Back office)
+
+[ ] Message -> (complete profil)
+[ ] SERVICE -> (front et back office)
+[ ] STAFF -> (Formulaire connexion)
+[ ] BACK OFFICE
