@@ -75,7 +75,7 @@
 
     <script>
         function addToCartRqtBuilder(id) {
-        let url = window.location.href="controller/cartAction.php?action=addToCart&id="
+        let url = window.location.href="controller/CartController.php?action=addToCart&id="
                     +id
                     +"&qty="
                     +$("#idCard" + id + " > " + "#qty").val();

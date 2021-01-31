@@ -3,11 +3,8 @@
 require_once '../Cart.php';
 $cart = new Cart;
 
-echo '4 3/4 <br>';
-
 // Include the database config file
 require_once '../config.php';
-echo '4,85  <br>';
 
 // Default redirect page
 $redirectLoc = '../index.php';
@@ -47,11 +44,12 @@ if (isset($_REQUEST['action']) && !empty($_REQUEST['action'])) {
 
         //*********REMOVE************
     } elseif ($_REQUEST['action'] == 'removeCartItem' && !empty($_REQUEST['id'])) {
+        echo 'in removeCartItem';
         // Remove item from cart
         $deleteItem = $cart->remove($_REQUEST['id']);
 
         // Redirect to cart page
-        $redirectLoc = 'viewCart.php';
+        $redirectLoc = '../view/viewCart.php';
     }
 }
 
@@ -84,5 +82,5 @@ function getSavedShoppingCart($customerId)
 }
 
 // Redirect to the specific page
-//header("Location: $redirectLoc");
-//exit();
+header("Location: $redirectLoc");
+exit();
