@@ -3,7 +3,7 @@ require '../model/Customers.php';
 
 $customerInfo = new Customers();
 
-if (isset($_POST['formInscription'])) {
+if (isset($_POST['signUp'])) {
     require_once '../config.php';
     $bdd = config();
     if (empty($_POST['name']) OR empty($_POST['email']) OR empty($_POST['password']) OR empty($_POST['password-repeat'])) {
@@ -19,6 +19,7 @@ if (isset($_POST['formInscription'])) {
                 $customer = new Customers();
                 $customer->insert(array("name" => $_POST['name'], "email" => $_POST['email'], "password" => $_POST['password'] ));
                 header('location: ../view/signin.php');
+                exit;
             }
             else header('location: ../view/signup.php?errorPass');//$msg = "Mot de passe différent !";
         }
@@ -38,14 +39,8 @@ if (isset($_POST['connect'])) {
         if($customer != null) {
             require_once 'CartController.php';
             getSavedShoppingCart($customer->getId());
-            echo 'id = ' .$customer->getId();
-            //$_SESSION['name'] = $customers->getName();
-            //$_SESSION['email'] = $customers->getEmail();
-            //session_start();
-            $_SESSION['customer'] = (array)$customer;
-            var_dump($_SESSION['customer']);
-            //header("Location: ../index.php");
-            //header("Location: ../view/profil.php?id=".$_SESSION['customer']);
+            header('location: ../view/profil.php?id='.$customer->getId());
+            exit;
         }
         else {
             echo 'error: $customers->connect() == null';
@@ -54,39 +49,40 @@ if (isset($_POST['connect'])) {
     else $msg = "Tous les champs doivent être complété";
 }
 
-if (isset($_POST['formModif']) && $_SESSION['customer']->getId() != null) {
+if (isset($_POST['formModif']) && $_SESSION['customer']['id'] != null) {
     require_once '../config.php';
     $bdd = config();
-    $testEmail = email($bdd);
+    $testEmail = email();
     if (!empty($testEmail)) {
         header('location: ../view/profil.php?' . $testEmail);
     }
 
     if (isset($_POST['password']) && $_POST['password'] != $_POST['password-repeat']) {
         header('location: ../view/profil.php?errorPass');
-    }
-    elseif(empty(email($bdd))){
-        $rqt = $bdd->prepare('UPDATE customers SET name = :name , email = :email, password= :password, phone= :phone WHERE id = :id');
-        $rqt->execute(array(
-            'id'=>$_SESSION['id'],
-            'name'=>$_POST['name'],
-            'email'=>$_POST['email'],
-            'password'=>password_hash($_POST['password'], PASSWORD_DEFAULT),
-            'phone'=>$_POST['phone']
-        ));
-        $rqt->closeCursor();
-        unset($_SESSION['name'], $_SESSION['email']);
-        $_SESSION['name'] = $_POST['name'];
-        $_SESSION['email'] = $_POST['email'];
-        header('location: ../view/profil.php');
+    } elseif (empty(email())) {
+        $customer = new Customers();
+        $update = $customer->update($_SESSION['id']);
+        if($_POST['email'] == "not in db" && $_SESSION['customer']['email'] != $_POST['email']) {
+            echo 'Email utilisée';
+        } else {
+            $_SESSION['customer'] = $update;
+            header('location: ../view/profil.php');
+            exit;
+        }
     }
 }
-
-
-function email($p_bdd): string
+function forgot(){
+    $forgot = new Customers();
+    $test = $forgot->forgot($_POST['forgot']);
+    $test != null ? sendEmail($test) : 'Address mail not exist';
+    function sendEmail(){
+    }
+}
 {
     if (filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
-        $rqt = $p_bdd->prepare('SELECT * FROM customers WHERE email = ?');
+        require_once '../config.php';
+        $bdd = config();
+        $rqt = $bdd->prepare('SELECT * FROM customers WHERE email = ?');
         $rqt->execute(array($_POST['email']));
         $compare = $rqt->fetch();
         $rqt->closeCursor();

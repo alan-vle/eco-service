@@ -1,4 +1,5 @@
 <?php
+
 require_once '../config.php';
 
 class Customers{
@@ -21,14 +22,13 @@ class Customers{
 
     public function insert($dataCustomers)
     {
-        $insert = $this->bdd->prepare('INSERT INTO customers(name, email, password, role, date) VALUES(?,?,?,?,CURDATE())');
+        $insert = $this->bdd->prepare('INSERT INTO customers(name, email, password, role, date) VALUES(?, ?, ?, ?, CURDATE())');
         $insert->execute(array($dataCustomers['name'], $dataCustomers['email'], password_hash($dataCustomers['password'], PASSWORD_DEFAULT), "membre"));
         $insert->closeCursor();
     }
 
     public function connect($email, $password)
     {
-        echo 'IN connect <br>';
         $rqt = $this->bdd->prepare('SELECT * FROM customers WHERE email = ?');
         $rqt->execute(array($email));
         $customer = $rqt->fetch();
@@ -36,7 +36,7 @@ class Customers{
 
         if ($customer['email'] == $email && password_verify($password, $customer['password']))
         {
-            echo 'User exist <br>';
+            //echo 'User exist <br>';
 
             $this->id = $customer['id'];
             $this->name = $customer['name'];
@@ -48,24 +48,75 @@ class Customers{
             $this->country = $customer['country'];
             $this->phone = $customer['phone'];
             $this->idCompany = $customer['id_company'];
+            $_SESSION['customer'] = session();
         }
     }
 
-    public function update()
+    public function update($id)
     {
-
+        $rqt = $this->bdd = prepare('SELECT password FROM customers WHERE id = ?');
+        $rqt->execute($_SESSION['id']);
+        $password = $rqt->fetch();
+        $rqt->closeCursor();
+        if(password_verify($_POST['password'], $password['password'])){
+            $rqt = $this->bdd->prepare('UPDATE customers SET name = :name, email = :email, password= :password, phone= :phone WHERE id = :id');
+            $rqt->execute(array(
+                'id'=>$_SESSION['id'],
+                'name'=>$_POST['name'],
+                'email'=>$_POST['email'],
+                'password'=>password_hash($_POST['password'], PASSWORD_DEFAULT),
+                'phone'=>$_POST['phone']
+            ));
+            $rqt->closeCursor();
+            unset($_SESSION['customer']);
+            return session();
+        } else {
+        return $error = 'Mot de passe actuelle incorrect';
+        }
     }
 
     function delete()
     {
-
+        $rqt = $this->bdd->prepare('DELETE FROM customers WHERE id = ?');
+        $rqt->execute(array($_SESSION['id']));
+        $rqt->closeCursor();
+        unset($_SESSION['customer']);
     }
-
+    public function forgot($email, $password = null) :string
+    {
+        $rqt = $this->bdd->prepare('SELECT * FROM customers WHERE email = ?');
+        $rqt->execute(array($email));
+        $forgot = $rqt->fetch();
+        $rqt->closeCursor();
+        if($forgot == false){
+            if($password != null){
+                return array('email' => $forgot['email'], 'password' => $forgot['password']);
+            }
+            else {
+                return $forgot['email'];
+            }
+        }
+        else return define(null);
+    }
     function read()
     {
 
     }
 
+    function session() :array
+    {
+        return array('id' => $this->getId(),
+            'name' => $this->getName(),
+            'email' => $this->getEmail(),
+            'address' => $this->getAddress(),
+            'address2' => $this->getAddress2(),
+            'town' => $this->getTown(),
+            'zipCode' => $this->getZipCode(),
+            'country' => $this->getCountry(),
+            'phone' => $this->getPhone(),
+            'idCompany' => $this->getIdCompany()
+        );
+    }
     /**
      * @return mixed
      */

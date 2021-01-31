@@ -1403,7 +1403,16 @@
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
+<<<<<<< Updated upstream
     <key id="409" parent="335" name="PRIMARY">
+=======
+    <column id="409" parent="335" name="date">
+      <Position>6</Position>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="410" parent="335" name="PRIMARY">
+>>>>>>> Stashed changes
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>

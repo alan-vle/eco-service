@@ -14,15 +14,15 @@ $cartContents = $cart->contents();
         integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
         crossorigin="anonymous">></script>
 <script>
-function updateCartItem(obj,id){
-    $.get("../controller/CartController.php", {action:"updateCartItem", id:id, qty:obj.value}, function(data){
-        if(data == 'ok'){
-            location.reload();
-        }else{
-            alert('Cart update failed, please try again.');
-        }
-    });
-}
+    function updateCartItem(obj,id){
+        $.get("../controller/CartController.php", {action:"updateCartItem", id:id, qty:obj.value}, function(data){
+            if(data == 'ok'){
+                location.reload();
+            }else{
+                alert('Cart update failed, please try again.');
+            }
+        });
+    }
 </script>
 
 <div class="container">
@@ -35,7 +35,7 @@ function updateCartItem(obj,id){
                     <th>Quantité</th>
                     <th class="text-center">Prix</th>
                     <th class="text-center">Total</th>
-                    <th> </th>
+                    <th> </th>
                 </tr>
                 </thead>
                 <tbody>
@@ -73,30 +73,30 @@ function updateCartItem(obj,id){
                 }
                 ?>
                 <tr>
-                    <td>   </td>
-                    <td>   </td>
-                    <td>   </td>
+                    <td>   </td>
+                    <td>   </td>
+                    <td>   </td>
                     <td><h5>Sous-total</h5></td>
                     <td class="text-right"><h5><strong><?=$costNoShip?> €</strong></h5></td>
                 </tr>
                 <tr>
-                    <td>   </td>
-                    <td>   </td>
-                    <td>   </td>
+                    <td>   </td>
+                    <td>   </td>
+                    <td>   </td>
                     <td><h5>Frais de port</h5></td>
                     <td class="text-right"><h5><strong>$6.94</strong></h5></td>
                 </tr>
                 <tr>
-                    <td>   </td>
-                    <td>   </td>
-                    <td>   </td>
+                    <td>   </td>
+                    <td>   </td>
+                    <td>   </td>
                     <td><h3>Total</h3></td>
                     <td class="text-right"><h3><strong><?=$costNoShip + 6.94?> €</strong></h3></td>
                 </tr>
                 <tr>
-                    <td>   </td>
-                    <td>   </td>
-                    <td>   </td>
+                    <td>   </td>
+                    <td>   </td>
+                    <td>   </td>
                     <td>
                         <button type="button" class="btn btn-secondary"> Articles </button></td>
                     <td>

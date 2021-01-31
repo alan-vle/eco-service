@@ -26,7 +26,7 @@
 
 					<!--Corps formulaire-->
 					<div class="p-2">
-						<form class="custom-card-form" method="POST" action="../controller/UsersController.php">
+						<form class="custom-card-form" method="POST" action="../controller/CustomerController.php">
 						<?php 
 						if (isset($_GET['errorPass']) || isset($_GET['notValidMail']) || isset($_GET['errorMail'])) {
 							?>
@@ -68,7 +68,7 @@
 								<label class="form-check-label required" for="registration_form_cdn"> Accepter les conditions générales d'utilisation</label>
 							</div>
 							<div class="text-center btn-custom">
-									<button type="submit" class="btn btn-lg" name="formInscription">S'inscrire</button>
+									<button type="submit" class="btn btn-lg" name="signUp">S'inscrire</button>
 							</div>
 							
 						</form>
