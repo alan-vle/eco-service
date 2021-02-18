@@ -7,5 +7,5 @@
 
 [ ] Message -> (complete profil)
 [ ] SERVICE -> (front et back office)
-[ ] STAFF -> (Formulaire connexion)
-[ ] BACK OFFICE
+[X] STAFF -> (Formulaire connexion)
+[ ] BACK OFFICE -> Affichage en fonction du role
