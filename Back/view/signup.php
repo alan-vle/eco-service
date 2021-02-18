@@ -12,7 +12,7 @@
 </head>
 
 <body>
-	
+
 <div class="container-fluid" id="content">
 	<div class="row forum-div text-center">
 		<div class="col-md-4 offset-md-4">
@@ -27,11 +27,11 @@
 					<!--Corps formulaire-->
 					<div class="p-2">
 						<form class="custom-card-form" method="POST" action="../controller/CustomerController.php">
-						<?php 
+						<?php
 						if (isset($_GET['errorPass']) || isset($_GET['notValidMail']) || isset($_GET['errorMail'])) {
 							?>
 							<p class="alert alert-danger" role="alert">
-								<?php 
+								<?php
 								if(isset($_GET['errorPass'])) {
 									echo 'mots de passe different !';
 								}
@@ -43,9 +43,9 @@
 								}
 								?>
 							</p>
-						<?php 
+						<?php
 						}?>
-							
+
 							<div class="form-group">
 								<label class="required">Votre pseudo</label>
 								<input type="text" value="" name="name" id="inputName" class="form-control" required="" autofocus="">
@@ -62,15 +62,15 @@
 								<label class="required">Confirmation du mot de passe</label>
 								<input type="password" name="password-repeat" id="inputPasswordRepeat" data-toggle="password" class="form-control" required="">
 							</div>
-							
-							<div class="form-check">        
+
+							<div class="form-check">
 								<input type="checkbox" id="registration_form_cdn" name="registration_form[cdn]" required="required" class="form-check-input" value="1">
 								<label class="form-check-label required" for="registration_form_cdn"> Accepter les conditions générales d'utilisation</label>
 							</div>
 							<div class="text-center btn-custom">
 									<button type="submit" class="btn btn-lg" name="signUp">S'inscrire</button>
 							</div>
-							
+
 						</form>
 					</div>
 				</div>
@@ -78,6 +78,6 @@
 		</div>
 	</div>
 </div>
-	
+
 </body>
 </html>

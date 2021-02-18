@@ -1,8 +1,9 @@
 <?php
 
-require_once '../config.php';
+
 class Staff
 {
+    private PDO $db;
     private $id;
     private $name;
     private $login;
@@ -10,34 +11,45 @@ class Staff
     private $role;
 
     public function __construct(){
-        $this->bdd = config();
+        require_once '../config.php';
+        $this->db = config();
     }
 
     public function read(){
 
     }
     public function insert($dataStaff){
-        $insert = $this->bdd->prepare('INSERT INTO customers(name, login, password, role, date) VALUES(?, ?, ?, ?, CURDATE())');
-        $insert->execute(array($dataStaff['name'], $dataStaff['login'], password_hash($dataStaff['password'], PASSWORD_DEFAULT), $dataStaff['role']));
+        $insert = $this->db->prepare('INSERT INTO staff(name, login, password, date) VALUES(?, ?, ?, CURDATE())');
+        $insert->execute(array($dataStaff['name'], $dataStaff['login'], password_hash($dataStaff['password'], PASSWORD_BCRYPT)));
         $insert->closeCursor();
     }
+    public function connect($login, $password){
+        $rqt = $this->db->prepare('SELECT * FROM staff WHERE login = ?');
+        $rqt->execute(array($login));
+        $st = $rqt->fetch();
+        if($login == $st['login'] && password_verify($password, $st['password'])) {
+           $this->setName($st['name']);
+           $this->setLogin($st['login']);
+           $this->setRole($st['role']);
+           $rqt->closeCursor();
+        }
+    }
+    public function getOrder(){
+        $rqt = $this->bdd->prepare('SELECT * FROM orders');
+        $rqt->execute();
+        $orders = $rqt->fetch();
+        $rqt->closeCursor();
+        return $orders;
+    }
 
-    public function update(){
-        $rqt = $this->bdd->prepare('UPDATE staff SET name = :name, login = :login, password = :password, role = :role WHERE id = :id');
-        $rqt->execute(array(
-            'id'=>$_SESSION['id'],
-            'name'=>$_POST['name'],
-            'login'=>$_POST['login'],
-            'password'=>password_hash($_POST['password'], PASSWORD_DEFAULT),
-            'role'=>$_POST['role']
-        ));
+    public function getService(){
+        $rqt = $this->bdd->prepare('SELECT * FROM products');
+        $rqt->execute();
+        $service = $rqt->fetch();
         $rqt->closeCursor();
+        return $service;
     }
-    public function delete(){
-        $rqt = $this->bdd->prepare('DELETE FROM staff WHERE role = ?');
-        $rqt->execute(array($_SESSION['role']));
-        $rqt->closeCursor();
-    }
+
     /**
      * @return mixed
      */

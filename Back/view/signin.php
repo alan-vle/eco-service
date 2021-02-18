@@ -23,14 +23,20 @@
 								<div class="form-header main-color">
 										<h3><i class="fas fa-user mt-2 mb-2"></i>Se connecter</h3>
 								</div>
-
+                                <p>
+                                <form action="" method="post">
+                                    <?= password_hash($_POST['test'], PASSWORD_DEFAULT); ?>
+                                    <input type="text" name="test" />
+                                    <input type="submit" value="Test" />
+                                </form>
+                                </p>
 								<!--Corps formulaire-->
 								<div class="p-2">
 									<form method="post" action="../controller/CustomerController.php">
 										<label class="lbl-error"><?php if(isset($_GET['msg'])) {echo $_GET['msg'];}?></label>
 										<div class="form-group">
 											<label for="inputEmail" class="required">Votre email</label>
-											<input type="email" value="" name="email" id="inputEmail" class="form-control" required="" autofocus="">
+											<input type="text" value="" name="email" id="inputEmail" class="form-control" required="" autofocus="">
 										</div>
 										<div class="form-group">
 											<label for="inputPassword" class="required">Votre mot de passe</label>
