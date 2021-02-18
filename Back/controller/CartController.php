@@ -79,8 +79,9 @@ function getSavedShoppingCart($customerId)
         $cart = new Cart();
         echo 'table vide';
     }
+
 }
 
 // Redirect to the specific page
-header("Location: $redirectLoc");
-exit();
+/*header("Location: $redirectLoc");
+exit();*/

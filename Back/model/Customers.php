@@ -33,11 +33,9 @@ class Customers{
         $rqt->execute(array($email));
         $customer = $rqt->fetch();
         $rqt->closeCursor();
-
         if ($customer['email'] == $email && password_verify($password, $customer['password']))
         {
             //echo 'User exist <br>';
-
             $this->id = $customer['id'];
             $this->name = $customer['name'];
             $this->email = $customer['email'];
@@ -48,8 +46,13 @@ class Customers{
             $this->country = $customer['country'];
             $this->phone = $customer['phone'];
             $this->idCompany = $customer['id_company'];
-            $_SESSION['customer'] = session();
+            if(!session_id()){
+                session_start();
+            }
+            $_SESSION['customer']= $this->session();
+            return true;
         }
+        return false;
     }
 
     public function update($id)
@@ -102,7 +105,13 @@ class Customers{
     {
 
     }
-
+    function email(){
+        $rqt = $this->db->prepare('SELECT * FROM customers WHERE email = ?');
+        $rqt->execute(array($_POST['email']));
+        $compare = $rqt->fetch();
+        $rqt->closeCursor();
+        return $compare;
+    }
     function session() :array
     {
         return array('id' => $this->getId(),
