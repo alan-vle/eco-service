@@ -9,3 +9,11 @@
 [ ] SERVICE -> (front et back office)
 [X] STAFF -> (Formulaire connexion)
 [ ] BACK OFFICE -> Affichage en fonction du role
+
+[ASI] Model services
+[ASI] model customers
+[ASI] Model SuperSu
+
+[AVE] Model Products
+[AVE] Model sTaff
+[AVE] Router/Controller
