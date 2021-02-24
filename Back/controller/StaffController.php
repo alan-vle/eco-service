@@ -10,10 +10,10 @@ if(isset($_POST['inscript'])){
     else{
         if ($_POST['password'] == $_POST['password-repeat']) {
             $staff->insert(array("name" => $_POST['name'], "login" => $_POST['login'], "password" => $_POST['password'] ));
-            header('location: ../view/staff/signIn.php');
+            header('location: ../view/back_office/signIn.php');
             exit;
         }
-        else header('location: ../view/staff/signup.php?errorPass');//$msg = "Mot de passe différent !";
+        else header('location: ../view/back_office/signup.php?errorPass');//$msg = "Mot de passe différent !";
     }
 }
 if (isset($_POST['connect'])) {

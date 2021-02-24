@@ -17,10 +17,9 @@
     integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
     crossorigin="anonymous">
 </script>
-
 <div class="container-fluid">
     <div class="row text-center">
-        <?php if (isset($_SESSION['id'])) {?>
+        <?php if (isset($_SESSION['customer'])) {?>
             <a href="deconnexion.php">deconnexion</a>
             
         <?php } else { ?>

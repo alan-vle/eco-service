@@ -28,6 +28,7 @@ if (isset($_REQUEST['action']) && !empty($_REQUEST['action'])) {
 
         // Insert item to cart
         echo $cart->insert($itemData) ? 'ok' : 'err';
+        $redirectLoc = '../index.php#idCard" . htmlspecialchars('.$_REQUEST['id'].')';
         header("location: ../index.php#idCard" . htmlspecialchars($_REQUEST['id']));
     } //*********UPDATE************
     elseif ($_REQUEST['action'] == 'updateCartItem' && !empty($_REQUEST['id'])) {

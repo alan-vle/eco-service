@@ -19,12 +19,12 @@ class Staff
 
     }
     public function insert($dataStaff){
-        $insert = $this->db->prepare('INSERT INTO staff(name, login, password, date) VALUES(?, ?, ?, CURDATE())');
+        $insert = $this->db->prepare('INSERT INTO back_office(name, login, password, date) VALUES(?, ?, ?, CURDATE())');
         $insert->execute(array($dataStaff['name'], $dataStaff['login'], password_hash($dataStaff['password'], PASSWORD_BCRYPT)));
         $insert->closeCursor();
     }
     public function connect($login, $password){
-        $rqt = $this->db->prepare('SELECT * FROM staff WHERE login = ?');
+        $rqt = $this->db->prepare('SELECT * FROM back_office WHERE login = ?');
         $rqt->execute(array($login));
         $st = $rqt->fetch();
         if($login == $st['login'] && password_verify($password, $st['password'])) {

@@ -17,11 +17,11 @@ if (isset($_POST['connect'])) {
         if($customerInfo->connect($_POST['email'], $_POST['password'])) {
             require_once 'CartController.php';
             getSavedShoppingCart($customerInfo->getId());
-            //header('location: ../view/profil.php?id='.$customer->getId());
-            //exit;
+            header('location: ../index.php');
+            exit;
         } else echo 'error: $customers->connect() == null';
     }
-    else $msg = "Tous les champs doivent être complété";
+    else $msg = 'Tous les champs doivent être complété';
 }
 
 /*if (isset($_POST['formModif']) && $_SESSION['customer']['id'] != null) {
